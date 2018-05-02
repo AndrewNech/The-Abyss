@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5e3474e84f45d8846abf11cd61f51b7f
+timeCreated: 1524998461
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Belwe LT Light
+  fontNames:
+  - Belwe LT Light
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
