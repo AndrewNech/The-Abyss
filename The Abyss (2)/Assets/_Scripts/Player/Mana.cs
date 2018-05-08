@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 
-public class Mana : NetworkBehaviour {
-    [SyncVar]
+
+public class Mana : MonoBehaviour {
+
     public int mana;
     private Text MANA;
 	void Start () {
@@ -15,20 +15,5 @@ public class Mana : NetworkBehaviour {
 	
 	void Update () {
         MANA.text = mana.ToString();
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (hit.collider!=null) {
-                if (hit.collider.tag == "Card")
-                {
-                    CmdOnClick(hit.collider.GetComponent<Values>().cost);
-                }
-            }
-        }
-    }
-    [Command]
-    void CmdOnClick(int cost)
-    {
-        mana -= cost;
     }
 }

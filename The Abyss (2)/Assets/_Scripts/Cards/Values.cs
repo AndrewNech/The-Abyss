@@ -11,8 +11,10 @@ public class Values : MonoBehaviour {
     public int dmg;
     public int cost;
     void Start () {
-		
-	}
+        hp = GetComponent<CardCollectable>().hp;
+        dmg = GetComponent<CardCollectable>().dmg;
+        cost = GetComponent<CardCollectable>().cost;
+    }
 	
 	
 	void Update () {
