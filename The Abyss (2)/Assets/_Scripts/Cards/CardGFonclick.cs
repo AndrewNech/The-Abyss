@@ -32,6 +32,7 @@ public class CardGFonclick : MonoBehaviour {
                     biggercard.GetComponent<Values>().hp= biggercard.GetComponent<CardCollectable>().hp;
                     biggercard.GetComponent<Values>().cost = GetComponent<CardCollectable>().cost;
                     biggercard.GetComponent<Values>().dmg = GetComponent<CardCollectable>().dmg;
+                    biggercard.GetComponent<Values>().cardname = GetComponent<CardCollectable>().cardname;
 
                 }
             }

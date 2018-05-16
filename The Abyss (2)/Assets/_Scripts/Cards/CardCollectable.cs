@@ -12,4 +12,17 @@ public class CardCollectable : MonoBehaviour
     public int id;
     public int countofcards;
     public string cardname;
+
+    public AllCard allCard;
+
+    public AllCard GetAllCard()
+    {
+        allCard = JsonUtility.FromJson<AllCard>(File.ReadAllText(Application.streamingAssetsPath + "/AllCard.json"));
+        return allCard;
+    }
+}
+public class AllCard
+{
+    public int[] cardId;
+    public string[] cardName;
 }

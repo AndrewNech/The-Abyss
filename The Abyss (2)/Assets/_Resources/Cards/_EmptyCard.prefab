@@ -237,7 +237,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e3474e84f45d8846abf11cd61f51b7f, type: 3}
     m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
@@ -426,8 +426,8 @@ MonoBehaviour:
   HP: {fileID: 114239036185808000}
   DMG: {fileID: 114117971294241412}
   COST: {fileID: 114571924706583758}
-  Name: {fileID: 114121022529951916}
-  cardname: 
+  NAME: {fileID: 114121022529951916}
+  cardname: 1
   hp: 0
   dmg: 0
   cost: 1

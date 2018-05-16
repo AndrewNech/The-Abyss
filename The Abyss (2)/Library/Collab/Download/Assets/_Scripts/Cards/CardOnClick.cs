@@ -18,7 +18,7 @@ public class CardOnClick : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, Mathf.Infinity, masktosee);
         if (hit.collider != null)
         {
-            if (hit.transform.gameObject == this.gameObject&& biggercard == null&&Vector2.Distance(transform.position,GetComponent<CardMove>().SetStartCoord) <0.6f)
+            if (hit.transform.gameObject == this.gameObject&& biggercard == null&&Vector2.Distance(transform.position,GetComponent<CardMove>().startcoord)<0.6f)
             {
 
                 if (!Input.GetKey(KeyCode.Mouse0)) {

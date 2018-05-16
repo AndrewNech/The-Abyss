@@ -92,8 +92,8 @@ public class CardOnHand : MonoBehaviour
                     _distance = (-Distance() * cardsOnHand.Count / 2 + Distance() * i);
                     cardsOnHand[i].transform.localPosition = startPos;
 
-                    cardsOnHand[i].transform.position = new Vector3(cardsOnHand[i].transform.position.x + _distance, cardsOnHand[i].transform.position.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, cardsOnHand[i].transform.position.z - i / 100f);
-                  //  cardsOnHand[i].GetComponent<CardMove>().SetStartCoord = new Vector3(cardsOnHand[i].transform.position.x + _distance, cardsOnHand[i].transform.position.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, cardsOnHand[i].transform.position.z - i / 100f);
+                      cardsOnHand[i].transform.position = new Vector3(cardsOnHand[i].transform.position.x + _distance, cardsOnHand[i].transform.position.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, cardsOnHand[i].transform.position.z - i / 100f);
+                    //cardsOnHand[i].GetComponent<CardMove>().SetStartCoord = new Vector3(cardsOnHand[i].transform.position.x + _distance, cardsOnHand[i].transform.position.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, cardsOnHand[i].transform.position.z - i / 100f);
 
                     cardsOnHand[i].transform.localRotation = new Quaternion(0, 0, cardsOnHand[i].transform.position.x / 2f, -12f);
 

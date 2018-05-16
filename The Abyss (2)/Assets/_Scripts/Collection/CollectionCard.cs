@@ -47,6 +47,7 @@ public class CollectionCard : MonoBehaviour
                 cardOnScene[i].transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
                  cardOnScene[i].transform.localPosition = startPos;
                 cardOnScene[i].transform.position = new Vector3(cardOnScene[i].transform.position.x, cardOnScene[i].transform.position.y - i*3, cardOnScene[i].transform.position.z);
+                cardOnScene[i].GetComponent<Values>().id = collectCard.ids[i] - 1;
 
                 cardOnScene[i].GetComponent<CardPlay>().enabled = false;
                 cardOnScene[i].GetComponent<CardMove>().enabled = false;

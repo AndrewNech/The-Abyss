@@ -74,7 +74,6 @@ public class CardMove : MonoBehaviour
             if (keyForRemoveObj)
             {
                 cardOnHand.cardsOnHand.RemoveAt(cardId);
-                Time.timeScale=0;
                 keyForRemoveObj = !keyForRemoveObj;
             }
 

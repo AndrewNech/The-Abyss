@@ -33,7 +33,6 @@ public class CardOnClick : MonoBehaviour {
                     GetComponent<Values>().HP.enabled = false;
                     GetComponent<Values>().COST.enabled = false;
                     GetComponent<Values>().DMG.enabled = false;
-                    GetComponent<Values>().NAME.enabled = false;
                     biggercard.GetComponent<CardOnClick>().enabled = false;
                     biggercard.GetComponent<CardOnField>().enabled = false;
                     biggercard.GetComponent<CardMove>().enabled = false;
@@ -56,7 +55,6 @@ public class CardOnClick : MonoBehaviour {
         {
             GetComponent<Image>().enabled = true;
             GetComponent<Values>().HP.enabled = true;
-            GetComponent<Values>().NAME.enabled = true;
             GetComponent<Values>().COST.enabled = true;
             GetComponent<Values>().DMG.enabled = true;
             Destroy(biggercard);
