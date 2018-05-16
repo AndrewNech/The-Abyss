@@ -7,15 +7,18 @@ public class CardOnClick : MonoBehaviour {
 
     public GameObject biggercard;
     private GameObject canvas;
+    public LayerMask masktosee;
     void Start () {
         canvas = GameObject.Find("Canvas");
+        masktosee = GetComponent<CardMove>().masktosee;
     }
 	
 
 	void FixedUpdate () {
-        if (GetComponent<CardMove>().hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, Mathf.Infinity, masktosee);
+        if (hit.collider != null)
         {
-            if (GetComponent<CardMove>().hit.transform.gameObject == this.gameObject&& biggercard == null&&Vector2.Distance(transform.position,GetComponent<CardMove>().startcoord)<0.6f)
+            if (hit.transform.gameObject == this.gameObject&& biggercard == null&&Vector2.Distance(transform.position,GetComponent<CardMove>().SetStartCoord) <0.6f)
             {
 
                 if (!Input.GetKey(KeyCode.Mouse0)) {
@@ -33,6 +36,7 @@ public class CardOnClick : MonoBehaviour {
                     biggercard.GetComponent<CardOnClick>().enabled = false;
                     biggercard.GetComponent<CardOnField>().enabled = false;
                     biggercard.GetComponent<CardMove>().enabled = false;
+                    biggercard.GetComponent<CardPlay>().enabled = false;
 
                     biggercard.GetComponent<CardClickHelper>().enabled = true;
                     biggercard.GetComponent<CardClickHelper>().smallcard = this.gameObject;
@@ -47,7 +51,7 @@ public class CardOnClick : MonoBehaviour {
         }
 
        
-        if (GetComponent<CardMove>().hit.collider==null|| Input.GetKey(KeyCode.Mouse0)|| GetComponent<CardMove>().hit.collider.gameObject != this.gameObject && GetComponent<CardMove>().hit.collider != null)
+        if (hit.collider==null|| Input.GetKey(KeyCode.Mouse0)|| hit.collider.gameObject != this.gameObject && hit.collider != null)
         {
             GetComponent<Image>().enabled = true;
             GetComponent<Values>().HP.enabled = true;
