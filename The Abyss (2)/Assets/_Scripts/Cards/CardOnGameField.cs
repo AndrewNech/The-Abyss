@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardOnGameField : MonoBehaviour
 {
 
-    private List<GameObject> cardsOnGameField = new List<GameObject>();
+    public List<GameObject> cardsOnGameField = new List<GameObject>();
 
     public GameObject prefabPersonage;
 

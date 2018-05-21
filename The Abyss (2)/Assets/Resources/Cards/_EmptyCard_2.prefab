@@ -29,7 +29,6 @@ GameObject:
   - component: {fileID: 114010843428472360}
   - component: {fileID: 114748012637703142}
   - component: {fileID: 114494900580356240}
-  - component: {fileID: 114203016951430708}
   m_Layer: 5
   m_Name: _EmptyCard_2
   m_TagString: Card
@@ -261,10 +260,11 @@ MonoBehaviour:
   DMG: {fileID: 114009881167055888}
   COST: {fileID: 114680965996009866}
   NAME: {fileID: 114824568796400600}
-  cardname: 1
-  hp: 5
-  dmg: 4
-  cost: 4
+  id: 0
+  m_hp: 0
+  m_cardname: 
+  m_cost: 0
+  m_dmg: 0
 --- !u!114 &114071245829407686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,25 +293,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 7, y: 7}
   m_UseGraphicAlpha: 0
---- !u!114 &114203016951430708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215482024716110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4e5e1f47e27b34eaee4a5ac6c438f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 5
-  cost: 4
-  dmg: 4
-  energy: 60
-  rarity: 1
-  id: 2
-  countofcards: 2
-  cardname: Card
 --- !u!114 &114241780785793720
 MonoBehaviour:
   m_ObjectHideFlags: 1

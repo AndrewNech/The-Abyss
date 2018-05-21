@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CardOnHand : MonoBehaviour
 {
-    private Vector3 startPos = new Vector3(0, -361, 0);
+    public Vector3 startPos = new Vector3(0, -8, 0);
 
     public List<GameObject> cardsOnHand = new List<GameObject>();
     public GameObject Prefab;
@@ -25,14 +25,14 @@ public class CardOnHand : MonoBehaviour
         {
             try
             {
-                if (canvas.GetComponent<DeckInGame>().cards.Count != 0)
+                if (canvas.GetComponent<DeckInGame>().ids.Count != 0)
                 {
-                    int nextcard = UnityEngine.Random.Range(0, canvas.GetComponent<DeckInGame>().cards.Count);
+                    int nextcard = UnityEngine.Random.Range(0, canvas.GetComponent<DeckInGame>().ids.Count);
 
-                    cardsOnHand.Add(Instantiate(canvas.GetComponent<DeckInGame>().cards[nextcard], startPos, Quaternion.identity));
-                    canvas.GetComponent<DeckInGame>().cards[nextcard] = null;
-                    canvas.GetComponent<DeckInGame>().cards.RemoveAt(nextcard);
-
+                    cardsOnHand.Add(Instantiate(Prefab, startPos, Quaternion.identity));
+                    cardsOnHand[i].GetComponent<Values>().id = canvas.GetComponent<DeckInGame>().ids[nextcard];
+                    cardsOnHand[i].GetComponent<Values>().UpdateStatsToEmpty();
+                    canvas.GetComponent<DeckInGame>().ids.RemoveAt(nextcard);
                     cardsOnHand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
                     cardsOnHand[i].GetComponent<CardMove>().cardId = i;
 
@@ -62,17 +62,17 @@ public class CardOnHand : MonoBehaviour
         keyForCouroutine = false;
         yield return new WaitForSeconds(1f);
         //Take random card.
-        if (canvas.GetComponent<DeckInGame>().cards.Count != 0)
+        if (canvas.GetComponent<DeckInGame>().ids.Count != 0)
         {
-            int nextcard = UnityEngine.Random.Range(0, canvas.GetComponent<DeckInGame>().cards.Count);
+            int nextcard = UnityEngine.Random.Range(0, canvas.GetComponent<DeckInGame>().ids.Count);
 
-            cardsOnHand.Add(Instantiate(canvas.GetComponent<DeckInGame>().cards[nextcard], startPos, Quaternion.identity));
-            canvas.GetComponent<DeckInGame>().cards[nextcard] = null;
-            canvas.GetComponent<DeckInGame>().cards.RemoveAt(nextcard);
+            cardsOnHand.Add(Instantiate(Prefab, startPos, Quaternion.identity));
+            cardsOnHand[cardsOnHand.Count - 1].GetComponent<Values>().id = canvas.GetComponent<DeckInGame>().ids[nextcard];
+            cardsOnHand[cardsOnHand.Count - 1].GetComponent<Values>().UpdateStatsToEmpty();
+            canvas.GetComponent<DeckInGame>().ids.RemoveAt(nextcard);
 
             cardsOnHand[cardsOnHand.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
             cardsOnHand[cardsOnHand.Count - 1].GetComponent<CardMove>().cardId = cardsOnHand.Count - 1;
-
         }
         keyForCouroutine = true;
 
@@ -90,18 +90,13 @@ public class CardOnHand : MonoBehaviour
                 try
                 {
                     _distance = (-Distance() * cardsOnHand.Count / 2 + Distance() * i);
-                    cardsOnHand[i].transform.localPosition = startPos;
-
-                      cardsOnHand[i].transform.position = new Vector3(cardsOnHand[i].transform.position.x + _distance, cardsOnHand[i].transform.position.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, cardsOnHand[i].transform.position.z - i / 100f);
-                    //cardsOnHand[i].GetComponent<CardMove>().SetStartCoord = new Vector3(cardsOnHand[i].transform.position.x + _distance, cardsOnHand[i].transform.position.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, cardsOnHand[i].transform.position.z - i / 100f);
-
-                    cardsOnHand[i].transform.localRotation = new Quaternion(0, 0, cardsOnHand[i].transform.position.x / 2f, -12f);
+                    
+                    cardsOnHand[i].GetComponent<CardMove>().startcoord = new Vector3(startPos.x + _distance, startPos.y - ((1 + (Mathf.Pow((-(cardsOnHand.Count - 1f) / 2 + i), 2) / (3.5f * 3.5f))) * 0.1f) * 4f, 0 - i / 10000f);
+                    cardsOnHand[i].GetComponent<CardMove>().startrot = new Quaternion(0, 0, cardsOnHand[i].GetComponent<CardMove>().startcoord.x / 2f, -12f);
 
                     cardsOnHand[i].transform.SetSiblingIndex(1 + i);
 
                     cardsOnHand[i].GetComponent<CardMove>().cardplaceid = i;
-                    cardsOnHand[i].GetComponent<CardMove>().startrot = cardsOnHand[i].transform.localRotation;
-                    cardsOnHand[i].GetComponent<CardMove>().SetStartCoord = cardsOnHand[i].transform.position;
                     cardsOnHand[i].GetComponent<CardMove>().sibling = cardsOnHand[i].transform.GetSiblingIndex();
                 }
                 catch (MissingReferenceException)

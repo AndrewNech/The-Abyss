@@ -3,46 +3,71 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Xml.Serialization;
+using System.Xml.Linq;
+using System.Xml;
 
-
-public class AllCards : MonoBehaviour {
+public class AllCards : MonoBehaviour
+{
     private string path;
-    private ToSave save= new ToSave();
+    public Cards accestocard = new Cards();
     public List<GameObject> allcards = new List<GameObject>();
 
-    void Start() {
-        //Json
-        path = Application.persistentDataPath + "/" + "data.json";
+    private void Awake()
+    {
+        //XmlHelper
+        accestocard.Awake();
 
-        if (File.Exists(path))
-        {
-            save = JsonUtility.FromJson<ToSave>(File.ReadAllText(path));
-        }
-       
-        for (int i = 0; i < allcards.Count; i++)
-        {
-            save.cardcount.Add(allcards[i].GetComponent<CardCollectable>().countofcards);
-            save.ids.Add(allcards[i].GetComponent<CardCollectable>().id);
-        }
-        Debug.Log(path);
-        if (!File.Exists(path))
-        {
-            string newcard=JsonUtility.ToJson(save);
-            File.WriteAllText(path,newcard);
-        }
-        
     }
-
-
-
-
-   }
-[Serializable]
-public class ToSave
-{
-    public List<int> cardcount = new List<int>();
-    public List<int> ids = new List<int>();
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            accestocard.AddCardInCollection(1);
+            accestocard.GetCardInfo(2);
+        }
+    }
 }
+[Serializable]
+public class Cards
+{
+    public XmlDocument allcardsxml = new XmlDocument();
+    public XmlNode toreturn;
+    public XmlDocument playercardsxml = new XmlDocument();
+    public void Awake()
+    {
+        //XML
+        TextAsset ptext = (TextAsset)Resources.Load("XML/PlayerCards");
+        TextAsset ctext = (TextAsset)Resources.Load("XML/Cards");
+        allcardsxml.LoadXml(ctext.text);
+        playercardsxml.LoadXml(ptext.text);
+    }
+    public void AddCardInCollection(int cardid)
+    {
+        XmlNodeList playercardsnodelist = playercardsxml.GetElementsByTagName("card");
+        foreach (XmlNode node in playercardsnodelist)
+        {
+            if (int.Parse(node.Attributes["id"].Value) == cardid)
+            {
+                int temp = int.Parse(node.Attributes["count"].Value) + 1;
+                node.Attributes["count"].Value = temp.ToString();
+                playercardsxml.Save(Application.dataPath+"/Resources/XML/PlayerCards.xml");
+            }
+        }
+    }
+    public void GetCardInfo(int cardid)
+    {
+        XmlNodeList allcardsnodelist = allcardsxml.GetElementsByTagName("card");
+        foreach (XmlNode node in allcardsnodelist)
+        {
+            if (int.Parse(node.Attributes["id"].Value) == cardid)
+            {
+                toreturn = node;
+            }
+        }
+    }
+}
+
 
 
 

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<playercard>
+  <cards>
+    <card id="0" count="1">
+    </card>
+    <card id="1" count="35">
+    </card>
+    <card id="2" count="2">
+    </card>
+    <card id="3" count="4">
+    </card>
+    <card id="4" count="7">
+    </card>
+    <card id="5" count="4">
+    </card>
+    <card id="6" count="5">
+    </card>
+    <card id="7" count="1">
+    </card>
+    <card id="9" count="2">
+    </card>
+    <card id="10" count="1">
+    </card>
+    <card id="11" count="35">
+    </card>
+    <card id="12" count="2">
+    </card>
+    <card id="13" count="4">
+    </card>
+    <card id="14" count="7">
+    </card>
+    <card id="15" count="4">
+    </card>
+    <card id="16" count="5">
+    </card>
+    <card id="17" count="1">
+    </card>
+    <card id="18" count="2">
+    </card>
+  </cards>
+  <decks>
+    <deck id="0" cards="" name="" class="">
+    </deck>
+    <deck id="1" cards="0,1,1,1,6,7,3,7,5,8,1,6,0,0,10,4,3,6,1,2,3,1,2,3,1,2,2,7,2,7,9,14,9,9,9,9,9,9,9,9,3,4,10,10,10,10,3,9,9,9,9,4,3,2,1,0,7,6,7,13,9,10,3,4,3,3,3,3,3,3,2,3,3,3,3,3,7,7,7,7,7,7,7,7,7,9,9,10,10,3,4,10,9,9,9,7,6,6,6,7,7,9,10,10,10,10,10,10,10,7,6,9,9,0,9,7,10,3,9,7,9,3,7,7,2,2,1,2,2,6,1,7,9,7,10,9,7,7,10,10,10,4,3,2,1,0,5,6,12,13" name="" class="">
+    </deck>
+    <deck id="2" cards="" name="" class="">
+    </deck>
+    <deck id="3" cards="" name="" class="">
+    </deck>
+    <deck id="4" cards="" name="" class="">
+    </deck>
+    <deck id="5" cards="" name="" class="">
+    </deck>
+  </decks>
+</playercard>

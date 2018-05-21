@@ -2,36 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Xml.Serialization;
+using System.Xml.Linq;
+using System.Xml;
 
 public class DeckInGame : MonoBehaviour {
 
-    public List<GameObject> cards = new List<GameObject>();
-    public int deckcount;
-    private List<int> ids = new List<int>();
-    public CardsInDeck cardsjson = new CardsInDeck();
-    private string path;
-    private AllCards allcards; 
-    private string json;
-	void Awake () {
+    private AllCards allcards;
+    public List<int> ids = new List<int>();
+    void Awake () {
         allcards = GameObject.Find("AllCardsScripter").GetComponent<AllCards>();
-        path = Application.persistentDataPath + "/" + deckcount.ToString() + "deck.json";
-        json = File.ReadAllText(path);
-        cardsjson = JsonUtility.FromJson<CardsInDeck>(json);
+        XmlNodeList decks = allcards.accestocard.playercardsxml.GetElementsByTagName("deck");
 
-        for (int i = 0; i < cardsjson.cardcount; i++)
+            string cards = decks[1].Attributes["cards"].Value;
+            string[] characters = cards.Split(',');
+        foreach (string str in characters)
         {
-            cards.Add(allcards.allcards[cardsjson.ids[i]-1]);
+              if (str!="") {
+              ids.Add(int.Parse(str));
+              }
         }
+        
 	}
 
-    private void Update()
-    {
-
-    }
 }
-public class CardsInDeck
-{
-    public int cardcount;
-    public int[] ids;
 
-}

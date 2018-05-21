@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cards>
+  <card id="0" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="1" health="4" damage="5" cost="4" energy="1" name="OtherName" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="2" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="3" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="4" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="5" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="6" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="7" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="8" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="9" health="4" damage="5" cost="4" energy="1" name="OtherName" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="10" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="11" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="12" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="13" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="14" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="15" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="16" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="17" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="18" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  <card id="19" health="4" damage="5" cost="4" energy="5" name="Name" description="" abilities="" script="" coldescription="" rarity=""></card>
+  
+</cards>

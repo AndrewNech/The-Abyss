@@ -12,10 +12,14 @@ public class AttackEnergy : MonoBehaviour
     public GameObject linerenderer;
     private GameObject instantiatedline;
     public LayerMask masktosee;
+
+    private CardOnGameField cardOnGameField;
+
     void Start()
     {
+        cardOnGameField = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CardOnGameField>();
         coroutineenergystarted = false;
-        maxenergy = GetComponent<CardCollectable>().energy;
+        maxenergy = int.Parse(GetComponent<Values>().allcard.Attributes["energy"].Value);
     }
     IEnumerator Energyplus()
     {
@@ -49,9 +53,18 @@ public class AttackEnergy : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Mouse0)&& energy == maxenergy && hit.collider.gameObject != this.gameObject)
                 {
                  energy = 0;
-                 Destroy(hit.collider.gameObject);
+                for(int i = 0; i < cardOnGameField.cardsOnGameField.Count; i++)
+                {
+                    if (hit.collider.gameObject == cardOnGameField.cardsOnGameField[i])
+                    {
+                        cardOnGameField.cardsOnGameField.RemoveAt(i);
+                        Destroy(hit.collider.gameObject);
+                    }
+                }
+
             }
         }
+        
             if (!Input.GetKey(KeyCode.Mouse0))
             {
                 attackline = false;

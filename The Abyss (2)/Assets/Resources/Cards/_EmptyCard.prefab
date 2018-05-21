@@ -29,7 +29,6 @@ GameObject:
   - component: {fileID: 114876499360601210}
   - component: {fileID: 114592627208703048}
   - component: {fileID: 114108218815401308}
-  - component: {fileID: 114187413972651010}
   m_Layer: 5
   m_Name: _EmptyCard
   m_TagString: Card
@@ -293,25 +292,6 @@ MonoBehaviour:
   masktosee:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &114187413972651010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1093877185294304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4e5e1f47e27b34eaee4a5ac6c438f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  cost: 0
-  dmg: 0
-  energy: 40
-  rarity: 1
-  id: 1
-  countofcards: 1
-  cardname: Card
 --- !u!114 &114239036185808000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,10 +407,11 @@ MonoBehaviour:
   DMG: {fileID: 114117971294241412}
   COST: {fileID: 114571924706583758}
   NAME: {fileID: 114121022529951916}
-  cardname: 1
-  hp: 0
-  dmg: 0
-  cost: 1
+  id: 0
+  m_hp: 0
+  m_cardname: 
+  m_cost: 0
+  m_dmg: 0
 --- !u!114 &114571924706583758
 MonoBehaviour:
   m_ObjectHideFlags: 1

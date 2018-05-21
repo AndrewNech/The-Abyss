@@ -8,6 +8,11 @@ TagManager:
   - Canvas
   - Pers
   - Deck
+  - Collection
+  - first
+  - second
+  - third
+  - fourth
   layers:
   - Default
   - TransparentFX
