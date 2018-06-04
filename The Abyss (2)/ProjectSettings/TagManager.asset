@@ -7,6 +7,9 @@ TagManager:
   - Card
   - Canvas
   - Pers
+  - Deck
+  - Collection
+  - DeckButton
   layers:
   - Default
   - TransparentFX

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using System;
 
 public class CardOnGameField : MonoBehaviour
 {
 
-    private List<GameObject> cardsOnGameField = new List<GameObject>();
+    public List<GameObject> cardsOnGameField = new List<GameObject>();
 
     public GameObject prefabPersonage;
 
@@ -13,14 +15,24 @@ public class CardOnGameField : MonoBehaviour
 
     private float _distance;
 
-    public bool AddCardOnGameField()
+    public bool AddCardOnGameField( GameObject obj)
     {
         if (cardsOnGameField.Count < 10)
         {
-            cardsOnGameField.Add(Instantiate(prefabPersonage, startPos, Quaternion.identity));
-            cardsOnGameField[cardsOnGameField.Count - 1].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            cardsOnGameField[cardsOnGameField.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Pers").transform, false);
-            ResortCardOnGF();
+            try
+            {
+                
+                cardsOnGameField.Add(Instantiate(prefabPersonage, startPos, Quaternion.identity));
+                cardsOnGameField[cardsOnGameField.Count - 1].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                cardsOnGameField[cardsOnGameField.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Pers").transform, false);
+                
+                ResortCardOnGF();
+                
+            }
+            catch(Exception ex)
+            {
+                print(ex.Message);
+            }
             return true;
         }
         return false;

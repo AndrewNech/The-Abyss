@@ -11,8 +11,6 @@ public class CardPlay : MonoBehaviour
     private GameObject canvas;
     private GameObject player;
 
-    GameObject[] cards;
-    GameObject[] cardsrightpart;
 
     private CardOnGameField gameField;
     private CardOnHand CardOnHand;
@@ -24,8 +22,6 @@ public class CardPlay : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         canvas = GameObject.Find("Canvas");
-
-        cards = new GameObject[canvas.GetComponent<CardOnHand>().cardCount];
         gameField = canvas.GetComponent<CardOnGameField>();
         CardOnHand = canvas.GetComponent<CardOnHand>();
     }
@@ -41,20 +37,15 @@ public class CardPlay : MonoBehaviour
 
     void Cardplay()
     {
-        cards = GameObject.FindGameObjectsWithTag("Card");
-        for (int i = 0; i < cards.Length; i++)
-        {
-            if (cards[i].GetComponent<CardMove>().cardplaceid > GetComponent<CardMove>().cardplaceid)
-            {
-                cards[i].GetComponent<CardMove>().cardplaceid--;
-            }
-        }
         transform.SetAsFirstSibling();
-        if (gameField.AddCardOnGameField()) 
+        
+        
+       
+         if (gameField.AddCardOnGameField(gameObject)) 
         {
-            player.GetComponent<Mana>().mana -= GetComponent<Values>().cost;
-            Destroy(this.gameObject);
-            CardOnHand.ReprlaceCard();
+            player.GetComponent<Mana>().ManaChange(GetComponent<Values>().m_cost);
+             Destroy(this.gameObject);
+            CardOnHand.DestroyObj(gameObject);
         }
     }
 

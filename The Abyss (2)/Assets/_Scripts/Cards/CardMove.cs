@@ -14,17 +14,26 @@ public class CardMove : MonoBehaviour
     public int sibling;
     public int cardplaceid;
     public RaycastHit2D hit;
-    void Start()
+
+    public int cardId = 0;
+
+
+    CardOnHand cardOnHand;
+
+    private void Awake()
     {
         canvas = GameObject.Find("Canvas");
         onmouse = false;
+        cardOnHand = GameObject.Find("Canvas").GetComponent<CardOnHand>();
+        if (Application.loadedLevelName!="Collection") {
+            startcoord = cardOnHand.startPos;
+        }
     }
-
 
     void Update()
     {
-        
-        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward,Mathf.Infinity,masktosee);
+        transform.position = new Vector3(transform.position.x,transform.position.y,startcoord.z);
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, Mathf.Infinity, masktosee);
         if (hit.collider != null)
         {
             if (hit.collider.gameObject == this.gameObject)
@@ -34,9 +43,9 @@ public class CardMove : MonoBehaviour
                     onmouse = true;
                 }
             }
-            if (hit.collider.gameObject != this.gameObject&& !Input.GetKey(KeyCode.Mouse0))
+            if (hit.collider.gameObject != this.gameObject && !Input.GetKey(KeyCode.Mouse0))
             {
-                    onmouse = false;
+                onmouse = false;
             }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -45,16 +54,26 @@ public class CardMove : MonoBehaviour
         }
         if (onmouse == false)
         {
-            transform.SetSiblingIndex(sibling-1);
-            transform.localRotation = startrot;
-            transform.position = Vector3.Lerp(transform.position, new Vector3(startcoord.x, startcoord.y, transform.position.z), speed / 100 * Time.deltaTime);
+            MoveToHand();
+           
         }
         if (onmouse == true)
         {
-            transform.SetAsLastSibling();
-                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0f);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z), speed * Time.deltaTime);
+
+            MoveToMouse();
         }
 
+    }
+    void MoveToHand()
+    {
+        transform.SetSiblingIndex(sibling - 1);
+        transform.localRotation = startrot;
+        transform.position = Vector3.Lerp(transform.position, new Vector3(startcoord.x, startcoord.y, transform.position.z), speed / 100 * Time.deltaTime);
+    }
+    void MoveToMouse()
+    {
+        transform.SetAsLastSibling();
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0f);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z), speed * Time.deltaTime);
     }
 }
